@@ -22,30 +22,35 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="选择有时候比努力更重要">
-<meta property="og:type" content="website">
+  <meta name="description" content="二叉搜索树 BST 当前节点的 左子树中的任何一个点的权值&lt; 当前节点的权值 当前节点的 右子树中的任何一个点的权值&gt;当前节点的权值 中序遍历 左 根 右 遍历出来的是有序序列 本质上是维护一个有序 序列&#x2F;集合  结构体定义1234567891011struct Node &amp;#123;    int l, r;  &#x2F;&#x2F; 左右儿子    int key;   &#x2F;&#x2F; 二叉搜索树权">
+<meta property="og:type" content="article">
 <meta property="og:title" content="枫叶苑">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2022/09/12/%E5%B9%B3%E8%A1%A1%E6%A0%91/index.html">
 <meta property="og:site_name" content="枫叶苑">
-<meta property="og:description" content="选择有时候比努力更重要">
+<meta property="og:description" content="二叉搜索树 BST 当前节点的 左子树中的任何一个点的权值&lt; 当前节点的权值 当前节点的 右子树中的任何一个点的权值&gt;当前节点的权值 中序遍历 左 根 右 遍历出来的是有序序列 本质上是维护一个有序 序列&#x2F;集合  结构体定义1234567891011struct Node &amp;#123;    int l, r;  &#x2F;&#x2F; 左右儿子    int key;   &#x2F;&#x2F; 二叉搜索树权">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220718084847074.png">
+<meta property="og:image" content="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220718145744435.png">
+<meta property="article:published_time" content="2022-09-12T08:47:37.122Z">
+<meta property="article:modified_time" content="2022-07-18T07:48:02.579Z">
 <meta property="article:author" content="Mr笙">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220718084847074.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/09/12/%E5%B9%B3%E8%A1%A1%E6%A0%91/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>枫叶苑</title>
+  <title> | 枫叶苑</title>
   
 
 
@@ -193,9 +198,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -211,10 +217,9 @@
       <meta itemprop="name" content="枫叶苑">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2022/09/12/%E5%B9%B3%E8%A1%A1%E6%A0%91/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        </h1>
 
         <div class="post-meta">
 
@@ -235,7 +240,14 @@
                 <time title="修改时间：2022-07-18 15:48:02" itemprop="dateModified" datetime="2022-07-18T15:48:02+08:00">2022-07-18</time>
               </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -260,7 +272,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="二叉搜索树-BST"><a href="#二叉搜索树-BST" class="headerlink" title="二叉搜索树 BST"></a>二叉搜索树 BST</h2><ul>
+        <h2 id="二叉搜索树-BST"><a href="#二叉搜索树-BST" class="headerlink" title="二叉搜索树 BST"></a>二叉搜索树 BST</h2><ul>
 <li>当前节点的 左子树中的任何一个点的权值&lt; 当前节点的权值</li>
 <li>当前节点的 右子树中的任何一个点的权值&gt;当前节点的权值</li>
 <li>中序遍历 左 根 右 遍历出来的是有序序列</li>
@@ -314,107 +326,76 @@
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>, INF = <span class="number">1e8</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> l, r;  <span class="comment">// 左右儿子</span></span><br><span class="line">    <span class="type">int</span> key;   <span class="comment">// 二叉搜索树权值</span></span><br><span class="line">    <span class="type">int</span> val;   <span class="comment">// 大根堆的随机权值</span></span><br><span class="line">    <span class="type">int</span> cnt;   <span class="comment">// 当前节点的key的重复个数</span></span><br><span class="line">    <span class="type">int</span> size;  <span class="comment">// 当前节点的子孙节点个数</span></span><br><span class="line">&#125; tr[N];    <span class="comment">//空间O(N)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Treap在以关键码构成二叉搜索树的同时，还满足堆的性质,且堆的权重随机,这使得treap的期望复杂度是logn</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> root, idx;<span class="comment">// 根节点序号 和 序号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//更新父节点size信息,用儿子节点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">    tr[p].size = tr[tr[p].l].size + tr[tr[p].r].size + tr[p].cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个叶节点</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_node</span><span class="params">(<span class="type">int</span> key)</span></span>&#123;</span><br><span class="line">    tr[++ idx].key = key;</span><br><span class="line">    tr[idx].val = <span class="built_in">rand</span>();<span class="comment">//随机值</span></span><br><span class="line">    tr[idx].cnt = tr[idx].size = <span class="number">1</span>;<span class="comment">//cnt,size</span></span><br><span class="line">    <span class="keyword">return</span> idx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化平衡树 左右哨兵 </span></span><br><span class="line"><span class="comment">//y总:如果查询的结果可能不存在，那加上哨兵之后可以保证查询的结果一定存在，就不需要在查询过程中特判无解的</span></span><br><span class="line"><span class="comment">//情况了。</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">get_node</span>(-INF),<span class="built_in">get_node</span>(INF);</span><br><span class="line">    root = <span class="number">1</span>,tr[<span class="number">1</span>].r = <span class="number">2</span>;<span class="comment">//+inf &gt; -inf,+inf在-inf右边</span></span><br><span class="line">    <span class="built_in">pushup</span>(root);<span class="comment">//更新root的size</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//右旋</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">zig</span><span class="params">(<span class="type">int</span> &amp;p)</span></span>&#123; <span class="comment">//根变了,传引用</span></span><br><span class="line"><span class="comment">// 旋转的时候传root,root会变化,我们希望root还是真正的root,故用root</span></span><br><span class="line"><span class="comment">// p始终指向根</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> q = tr[p].l; <span class="comment">//q是左儿子</span></span><br><span class="line">    tr[p].l = tr[q].r,<span class="comment">//p的左儿子是q的右儿子</span></span><br><span class="line">    tr[q].r = p,<span class="comment">//q的右儿子是p</span></span><br><span class="line">    p = q;<span class="comment">//p再变回根</span></span><br><span class="line">    <span class="built_in">pushup</span>(tr[p].r),<span class="comment">//更新p.r</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">pushup</span>(p);<span class="comment">//不需要更新p是因为看着右旋图,右旋之前y左是A+B,y右是C,旋过之后实际上y左是A,y右是B+C,</span></span><br><span class="line">    <span class="comment">//但是不更新p,由于有 tr[q].r = p,相当于y的size由左侧的A+B和右侧的C构成,不影响最终size</span></span><br><span class="line">    <span class="comment">//但是p的r要更新,因为r由B和C构成(r旋前只有C)</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//左旋</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">zag</span><span class="params">(<span class="type">int</span> &amp;p)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> q = tr[p].r;</span><br><span class="line">    tr[p].r = tr[q].l;<span class="comment">//p的右儿子是q的左儿子</span></span><br><span class="line">    tr[q].l = p;<span class="comment">//q的左儿子是p</span></span><br><span class="line">    p = q;<span class="comment">//p再变回根</span></span><br><span class="line">    <span class="built_in">pushup</span>(tr[p].l);</span><br><span class="line">    <span class="built_in">pushup</span>(p);    </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//插入值key,从根开始</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> &amp;p,<span class="type">int</span> key)</span><span class="comment">//p是每一层根节点的指针</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p) p = <span class="built_in">get_node</span>(key);<span class="comment">// 不存在根,则构造(最底层时构造节点)</span></span><br><span class="line">    <span class="comment">//由于这里是引用,传过来的是A节点的左或右,get_node之后A节点的左和右就是get_node的返回值idx,故完成了连接</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (tr[p].key == key)tr[p].cnt ++; <span class="comment">// 刚好key和p的key相等, 则直接增加cnt</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (tr[p].key &gt; key)&#123; <span class="comment">// 当前节点值大于key,说明应该在左子树插入</span></span><br><span class="line">        <span class="built_in">insert</span>(tr[p].l,key);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//由于在左子树插入,插入左侧后左子树val可能大于根节点,左大右旋,保证堆的性质</span></span><br><span class="line">        <span class="keyword">if</span>(tr[tr[p].l].val &gt; tr[p].val) <span class="built_in">zig</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">insert</span>(tr[p].r,key);</span><br><span class="line">        <span class="comment">//右大左旋</span></span><br><span class="line">        <span class="keyword">if</span>(tr[tr[p].r].val &gt; tr[p].val) <span class="built_in">zag</span>(p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">pushup</span>(p);<span class="comment">//p是每一层的根,指针,自底向上更新p   </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">remove</span><span class="params">(<span class="type">int</span> &amp;p,<span class="type">int</span> key)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p) <span class="keyword">return</span> ;<span class="comment">//不存在要删除的值</span></span><br><span class="line">    <span class="keyword">if</span>(tr[p].key == key)&#123; <span class="comment">//要删除当前节点</span></span><br><span class="line">        <span class="keyword">if</span>(tr[p].cnt &gt; <span class="number">1</span>)tr[p].cnt --;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (tr[p].l || tr[p].r)&#123; <span class="comment">// 当前节点只有一个可以且有左儿子或右儿子</span></span><br><span class="line">        <span class="comment">//注意rand函数&gt;=0,左子树为空等价于idx = 0的点,其val为0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(!tr[p].r||tr[tr[p].l].val &gt; tr[tr[p].r].val)&#123;</span><br><span class="line">            <span class="comment">//只存在左儿子(左val&gt;右val_0)或左val&gt;右val </span></span><br><span class="line">                <span class="built_in">zig</span>(p);<span class="comment">//左val大右旋</span></span><br><span class="line">                <span class="built_in">remove</span>(tr[p].r,key);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span><span class="comment">//若存在右儿子且左val&lt;右val </span></span><br><span class="line">            <span class="comment">//(左儿子也可能不存在, 不存在的话左儿子的val就是0, 肯定&lt;=右儿子的val(val最小为0), 这个模板隐含了判存在操作)</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">zag</span>(p);<span class="comment">//右大左旋</span></span><br><span class="line">                <span class="built_in">remove</span>(tr[p].l,key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">//不存在左右子树,是叶子节点</span></span><br><span class="line">            p = <span class="number">0</span>;<span class="comment">//空节点</span></span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (tr[p].key &gt; key)<span class="built_in">remove</span>(tr[p].l,key);<span class="comment">//去左侧删</span></span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">remove</span>(tr[p].r,key);<span class="comment">//右侧删</span></span><br><span class="line">    <span class="built_in">pushup</span>(p);<span class="comment">// 自底向上更新p的size</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//没有修改,不需要引用</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_rank_by_key</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> key)</span>    <span class="comment">// 通过数值找排名</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!p) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (tr[p].key == key) <span class="keyword">return</span> tr[tr[p].l].size + <span class="number">1</span>;<span class="comment">//左子树的size + 1(同样的数值中最靠左的)</span></span><br><span class="line">    <span class="keyword">if</span> (tr[p].key &gt; key)<span class="keyword">return</span> <span class="built_in">get_rank_by_key</span>(tr[p].l,key);<span class="comment">//大了,去左子树找</span></span><br><span class="line">    <span class="keyword">return</span> tr[tr[p].l].size + tr[p].cnt + <span class="built_in">get_rank_by_key</span>(tr[p].r,key);<span class="comment">//去右边找的时候找的是在右子树中的排名,需要加上左子树和根的cnt</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_key_by_rank</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> rank)</span>   <span class="comment">// 通过排名找数值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p) <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">if</span>(tr[tr[p].l].size &gt;= rank) <span class="keyword">return</span> <span class="built_in">get_key_by_rank</span>(tr[p].l,rank);</span><br><span class="line">    <span class="comment">//左边的个数&gt;=rank,说明数值在左边</span></span><br><span class="line">    <span class="keyword">if</span>(tr[tr[p].l].size + tr[p].cnt &gt;= rank)<span class="keyword">return</span> tr[p].key;<span class="comment">//左子树个数不够,加上当前cnt又多了,那就是当前数值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">get_key_by_rank</span>(tr[p].r,rank - tr[tr[p].l].size - tr[p].cnt); <span class="comment">//去右子树中找数值,排名应该先减去左子树size+cnt</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_prev</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> key)</span>   <span class="comment">// 找到严格小于key的最大数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p) <span class="keyword">return</span> -INF;</span><br><span class="line">    <span class="keyword">if</span>(tr[p].key &gt;= key) <span class="keyword">return</span> <span class="built_in">get_prev</span>(tr[p].l,key);<span class="comment">//当前大于key,右子树不考虑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(tr[p].key,<span class="built_in">get_prev</span>(tr[p].r,key)); <span class="comment">//当前key&lt;key,不错,左子树都小于key所以不如key更好,所以考虑当前key和右子树</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_next</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> key)</span>    <span class="comment">// 找到严格大于key的最小数</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!p) <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">if</span>(tr[p].key &lt;= key)<span class="keyword">return</span> <span class="built_in">get_next</span>(tr[p].r,key); <span class="comment">//当前key小于key,左子树不考虑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(tr[p].key,<span class="built_in">get_next</span>(tr[p].l,key)); <span class="comment">//当前key&gt;key,不错,右子树都大于key所以不如key更好,所以考虑当前key和左子树</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">build</span>();</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n --)&#123;</span><br><span class="line">        <span class="type">int</span> op,x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;op,&amp;x);</span><br><span class="line">        <span class="keyword">if</span>(op == <span class="number">1</span>) <span class="built_in">insert</span>(root,x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">2</span>) <span class="built_in">remove</span>(root,x);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">3</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">get_rank_by_key</span>(root,x) - <span class="number">1</span>);<span class="comment">//查排名,有-INF,排名要-1</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">4</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">get_key_by_rank</span>(root,x + <span class="number">1</span>));<span class="comment">//查排名为x的数值,有-INF,内部排名为x + 1</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">5</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">get_prev</span>(root,x));</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,<span class="built_in">get_next</span>(root,x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+        
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr笙">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫叶苑">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/12/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mr笙
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2022/09/12/%E5%B9%B3%E8%A1%A1%E6%A0%91/" title="">http://example.com/2022/09/12/平衡树/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
         
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-09-12 09:37:40" itemprop="dateCreated datePublished" datetime="2022-09-12T09:37:40+08:00">2022-09-12</time>
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
             </span>
 
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>367</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
+            <span class="label">WeChat</span>
+          </a>
         </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
 
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+            <span class="label">RSS</span>
+          </a>
+        </div>
     </div>
+  </div>
 
-    
-    
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/12/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -467,6 +448,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-BST"><span class="nav-number">1.</span> <span class="nav-text">二叉搜索树 BST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">结构体定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pushup"><span class="nav-number">1.0.2.</span> <span class="nav-text">pushup</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.0.3.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E6%97%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">左旋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E6%97%8B"><span class="nav-number">1.0.5.</span> <span class="nav-text">右旋</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5"><span class="nav-number">1.1.1.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%BE%E5%89%8D%E9%A9%B1-x2F-%E5%90%8E%E7%BB%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">找前驱  &#x2F; 后继</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC-x2F-%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">1.1.3.</span> <span class="nav-text">找最大值&#x2F;最小值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82%E6%9F%90%E4%B8%AA%E5%80%BC%E7%9A%84%E6%8E%92%E5%90%8D"><span class="nav-number">1.1.4.</span> <span class="nav-text">求某个值的排名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E6%9F%90%E6%95%B0%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">1.1.5.</span> <span class="nav-text">比某数大的最小值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.6.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
