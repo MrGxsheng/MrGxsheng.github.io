@@ -229,10 +229,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-17 12:12:57 / 修改时间：12:10:01" itemprop="dateCreated datePublished" datetime="2022-09-17T12:12:57+08:00">2022-09-17</time>
+              <time title="创建时间：2022-09-17 12:12:57" itemprop="dateCreated datePublished" datetime="2022-09-17T12:12:57+08:00">2022-09-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-18 20:56:54" itemprop="dateModified" datetime="2022-09-18T20:56:54+08:00">2022-09-18</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -249,7 +255,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.1k</span>
+              <span>6.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -321,104 +327,13 @@
 <h3 id="F-序列操作"><a href="#F-序列操作" class="headerlink" title="F.序列操作"></a>F.序列操作</h3><p>好难 暂搬题解</p>
 <p>因为 <em>x+px</em>和 <em>x</em> 在模 <em>p</em> 下意义相同，不难发现 <em>x</em> 一定位于 [0,<em>p</em>−1] 内。特判  <em>x&#x3D;0</em>，枚举<br>$$<br>x(1≤x≤p−1)<br>$$<br>，通过解同余方程求出每个 x下 A→B的操作次数，对每个 ai 来说，解<br>$$<br>(ai+kx) ≡ bi  (mod p)<br>$$</p>
 <p>$$<br>kx ≡ (bi−ai)  (mod p)<br>$$</p>
-<p>因为p是质数 因此次数<br>$$<br>k&#x3D;((bi− ai) ∗ x ^  (p−2) ) % p<br>$$<br>对于每个 <em>x</em>，解 <em>n</em> 个同余方程后得到一个次数数组，因为题目要求是对一个子序列操作，所以次数数组里的最大值即为这个 <em>x</em> 对应的操作次数。</p>
+<p>因为p是质数 因此次数（费马小定理求逆元）<br>$$<br>k&#x3D;((bi− ai) ∗ x ^  (p−2) ) % p<br>$$<br>对于每个 <em>x</em>，解 <em>n</em> 个同余方程后得到一个次数数组，因为题目要求是对一个子序列操作，所以次数数组里的最大值即为这个 <em>x</em> 对应的操作次数。</p>
 <p>最小次数所对应的最小的 <em>x</em> 即为答案。</p>
 <p>时间复杂度 <em>O(n(log⁡p+p))</em> 。但这个复杂度显然会超时，我们需要进一步优化。</p>
 <p>注意到 <em>(bi−ai)%p</em> 的结果最多只有 <em>p</em> 个，若 <em>(bt−at)%p&#x3D;(bk−ak)%p</em>，那么解对应的同余方程所得到的结果是一样的，所以我们可以把这两个位置上的数当成一个来看，因此最多只需要解 <em>p</em> 个同余方程，时间复杂度进一步优化成 *O(p(log⁡p+p))*。</p>
-<h4 id="Code-6"><a href="#Code-6" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> debug puts(<span class="string">&quot;-----&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi (acos(-1.0))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eps (1e-8)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf (1&lt;&lt;30)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="comment">//快速幂</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qmi</span><span class="params">(<span class="type">int</span> a ,<span class="type">int</span> b , <span class="type">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b &amp; <span class="number">1</span>) ans = (ans * a) % p;</span><br><span class="line">		a = (a * a) % p;</span><br><span class="line">		b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans % p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> p;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; p;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span> , <span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : a) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;i);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : b) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;i);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : a) i %= p;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(a == b)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(p)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n ; i++) c[(b[i] - a[i] + p) % p] = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> ans , minn = <span class="number">1e9</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> x = <span class="number">1</span> ; x &lt; p ; x++)&#123;</span><br><span class="line">		<span class="type">int</span> tmp = <span class="built_in">qmi</span>(x,p - <span class="number">2</span> , p);</span><br><span class="line">		<span class="type">int</span> times = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i  = <span class="number">0</span> ; i &lt; p ;  i++)</span><br><span class="line">			<span class="keyword">if</span>(c[i])</span><br><span class="line">				times = <span class="built_in">max</span>(times,tmp * i % p);</span><br><span class="line">		<span class="keyword">if</span>(times &lt; minn)&#123;</span><br><span class="line">			minn = times;</span><br><span class="line">			ans = x;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	<span class="comment">// cin &gt;&gt; T;</span></span><br><span class="line">	T = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(T--) <span class="built_in">solve</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="Code-6"><a href="#Code-6" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> debug puts(<span class="string">&quot;-----&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi (acos(-1.0))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eps (1e-8)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf (1&lt;&lt;30)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="comment">//快速幂 求x的逆元</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qmi</span><span class="params">(<span class="type">int</span> a ,<span class="type">int</span> b , <span class="type">int</span> p)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans = <span class="number">1</span> ;</span><br><span class="line">	<span class="keyword">while</span>(b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b &amp; <span class="number">1</span>) ans = (ans * a) % p;</span><br><span class="line">		a = (a * a) % p;</span><br><span class="line">		b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans % p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> p;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; p;</span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span> , <span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : a) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;i);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : b) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;i);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i : a) i %= p;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//特判 a == b 的情况</span></span><br><span class="line">	<span class="keyword">if</span>(a == b)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">c</span><span class="params">(p)</span></span>;</span><br><span class="line">	</span><br><span class="line">   	<span class="comment">//处理出来（b[i] - a[i）% p的结果 防止为负数 加了偏移量</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n ; i++) c[(b[i] - a[i] + p) % p]++;</span><br><span class="line">	<span class="type">int</span> ans , minn = <span class="number">1e9</span>;</span><br><span class="line">    <span class="comment">//枚举x</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> x = <span class="number">1</span> ; x &lt; p ; x++)&#123;</span><br><span class="line">		<span class="type">int</span> tmp = <span class="built_in">qmi</span>(x,p - <span class="number">2</span> , p);<span class="comment">//快速幂求逆元</span></span><br><span class="line">		<span class="type">int</span> times = <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">//因为取完%后 数的范围在 0 - p - 1 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i  = <span class="number">0</span> ; i &lt; p ;  i++)</span><br><span class="line">			<span class="keyword">if</span>(c[i])</span><br><span class="line">				times = <span class="built_in">max</span>(times,tmp * i % p); <span class="comment">//i 就是上式中的（b[i] - a[i]）% p 乘上 x的逆元 tmp 就是次数</span></span><br><span class="line">		<span class="keyword">if</span>(times &lt; minn)&#123; <span class="comment">//更新结果</span></span><br><span class="line">			minn = times;</span><br><span class="line">			ans = x;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	<span class="comment">// cin &gt;&gt; T;</span></span><br><span class="line">	T = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(T--) <span class="built_in">solve</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>终于 …. 终于结束了 写题解真的好累啊(虽然有的题解 搬自官方题解)</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr笙">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫叶苑">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/17/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/" class="post-title-link" itemprop="url">高精度乘法</a>
-        </h2>
-
-        <div class="post-meta">
-
-        
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-17 08:26:57" itemprop="dateCreated datePublished" datetime="2022-09-17T08:26:57+08:00">2022-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-18 14:35:33" itemprop="dateModified" datetime="2022-09-18T14:35:33+08:00">2022-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%AB%98%E7%B2%BE%E5%BA%A6/" itemprop="url" rel="index"><span itemprop="name">高精度</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>777</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">mul</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> sc.next();</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; A = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> a.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; i--) A.add(a.charAt(i) - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; C = mu(A,b);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> C.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(C.get(k) == <span class="number">0</span> &amp;&amp; k &gt; <span class="number">0</span>) k--; <span class="comment">//去掉前置0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k ; i &gt;= <span class="number">0</span> ; i--)&#123;</span><br><span class="line">            System.out.print(C.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//y总高精度乘法模板</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title function_">mu</span><span class="params">(List&lt;Integer&gt; A, <span class="type">int</span> B)</span> &#123;</span><br><span class="line">            List&lt;Integer&gt; C = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; A.size() || t != <span class="number">0</span>; i++)&#123;</span><br><span class="line">                 <span class="keyword">if</span>(i &lt; A.size()) t += A.get(i) * B;</span><br><span class="line">                 C.add(t % <span class="number">10</span>);</span><br><span class="line">                 t = t / <span class="number">10</span> ;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -509,6 +424,97 @@
 
       
           <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">sub</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//输入 输出 模板</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> sc.next();</span><br><span class="line">        <span class="type">String</span> <span class="variable">b</span> <span class="operator">=</span> sc.next();</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; A = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; B = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> a.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) A.add(a.charAt(i) - <span class="string">&#x27;0&#x27;</span>);  <span class="comment">//高位在前 低位在后</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> b.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) B.add(b.charAt(i) - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cmp(A, B)) &#123;</span><br><span class="line">            List&lt;Integer&gt; C = su(A, B);</span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> C.size() - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(C.get(k) == <span class="number">0</span> &amp;&amp; k &gt; <span class="number">0</span>) k--; <span class="comment">//去掉前置0</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k; i &gt;= <span class="number">0</span>; i--) System.out.print(C.get(i));        <span class="comment">//输出的时候反向输出 先输出高位</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            List&lt;Integer&gt; C = su(B, A);</span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> C.size() - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(C.get(k) == <span class="number">0</span> &amp;&amp; k &gt; <span class="number">0</span>) k--; <span class="comment">//去掉前置0</span></span><br><span class="line">            System.out.print(<span class="string">&quot;-&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k; i &gt;= <span class="number">0</span>; i--) System.out.print(C.get(i));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//y总模板</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title function_">su</span><span class="params">(List&lt;Integer&gt; A, List&lt;Integer&gt; B)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; C = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, t = <span class="number">0</span>; i &lt; A.size(); i++) &#123;</span><br><span class="line">            t = A.get(i) - t;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; B.size()) t -= B.get(i);</span><br><span class="line">            C.add((t + <span class="number">10</span>) % <span class="number">10</span>);  <span class="comment">//t &gt;0 0 时 仍未t t&lt;0时 借一位加10 </span></span><br><span class="line">            <span class="keyword">if</span> (t &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                t = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                t = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断A，B大小</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">cmp</span><span class="params">(List&lt;Integer&gt; A, List&lt;Integer&gt; B)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (A.size() != B.size()) <span class="keyword">return</span> A.size() &gt; B.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> A.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A.get(i) != B.get(i)) &#123;</span><br><span class="line">                <span class="keyword">return</span> A.get(i) &gt; B.get(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr笙">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫叶苑">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/17/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/" class="post-title-link" itemprop="url">高精度乘法</a>
+        </h2>
+
+        <div class="post-meta">
+
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-17 08:26:57" itemprop="dateCreated datePublished" datetime="2022-09-17T08:26:57+08:00">2022-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-18 14:35:33" itemprop="dateModified" datetime="2022-09-18T14:35:33+08:00">2022-09-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E7%B2%BE%E5%BA%A6/" itemprop="url" rel="index"><span itemprop="name">高精度</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>777</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">mul</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> sc.next();</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; A = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> a.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; i--) A.add(a.charAt(i) - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; C = mu(A,b);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> C.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(C.get(k) == <span class="number">0</span> &amp;&amp; k &gt; <span class="number">0</span>) k--; <span class="comment">//去掉前置0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> k ; i &gt;= <span class="number">0</span> ; i--)&#123;</span><br><span class="line">            System.out.print(C.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//y总高精度乘法模板</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title function_">mu</span><span class="params">(List&lt;Integer&gt; A, <span class="type">int</span> B)</span> &#123;</span><br><span class="line">            List&lt;Integer&gt; C = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; A.size() || t != <span class="number">0</span>; i++)&#123;</span><br><span class="line">                 <span class="keyword">if</span>(i &lt; A.size()) t += A.get(i) * B;</span><br><span class="line">                 C.add(t % <span class="number">10</span>);</span><br><span class="line">                 t = t / <span class="number">10</span> ;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
       
@@ -1398,7 +1404,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">23 分钟</span>
+    <span title="站点阅读时长">24 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
