@@ -204,6 +204,146 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/%E5%BF%AB%E6%8E%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr笙">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫叶苑">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/14/%E5%BF%AB%E6%8E%92/" class="post-title-link" itemprop="url">快速排序</a>
+        </h2>
+
+        <div class="post-meta">
+
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-14 08:26:57 / 修改时间：09:42:47" itemprop="dateCreated datePublished" datetime="2022-09-14T08:26:57+08:00">2022-09-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">快速排序</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>快排的主要思想是：分治</p>
+<p>快排模板(以j为分界)<br>快排属于分治算法，分治算法都有三步：</p>
+<ol>
+<li>分成子问题</li>
+<li>递归处理子问题</li>
+<li>子问题合并</li>
+</ol>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">quickSort</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[num];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; num ; i++)&#123;</span><br><span class="line">            arr[i] = sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        quickSort1(arr,<span class="number">0</span>,num - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; num ; i++)&#123;</span><br><span class="line">            System.out.print(arr[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//模板</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title function_">quickSort1</span><span class="params">(<span class="type">int</span>[] arr , <span class="type">int</span> l ,<span class="type">int</span> r)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( l &gt;= r) <span class="keyword">return</span>; <span class="comment">//递归的终止情况 关键  特别容易忘！！！</span></span><br><span class="line">        <span class="comment">//第一步，分成子问题</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> arr[l]; <span class="comment">// l可以为r 也可以为 （l+r+1）/2； 如果下面递归用i 这里用r 否则会有边界问题</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r + <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//这里让他先 加 在比较</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">while</span>(arr[++i] &lt; x);</span><br><span class="line">            <span class="keyword">while</span> (arr[--j] &gt; x);</span><br><span class="line">            <span class="keyword">if</span>(i &lt; j)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">                arr[i] = arr[j];</span><br><span class="line">                arr[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//第二步：递归处理子问题</span></span><br><span class="line">        quickSort1(arr, l , j ); <span class="comment">// j也可以为i 换成i之后 下面j +1 换成 i -1</span></span><br><span class="line">        quickSort1(arr,j +<span class="number">1</span> , r );</span><br><span class="line">        <span class="comment">//第三步：子问题合并.快排这一步不需要操作，但归并排序的核心在这一步骤</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>一直递归 缩小范围 排序 最后 范围缩小为一个数 这样的话就排序好了</p>
+<p> 用i做划分的模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>];<span class="comment">//注意是向上取整,因为向下取整可能使得x取到q[l]								//相当于（l+r+1）/2</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, i - <span class="number">1</span>), <span class="built_in">quick_sort</span>(q, i, r);<span class="comment">//不用q[l..i],q[i+1..r]划分的道理和分析4中j的情况一样</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>分析：</p>
+<p>q代表上方arr</p>
+<p>快排属于分治算法，最怕的就是 n分成0和n，或 n分成n和0,这会造成无限划分</p>
+<p>1.以j为划分时，x不能选q[r] (若以i为划分,则x不能选q[l])</p>
+<p>假设 x &#x3D; q[r]</p>
+<p>关键句子quick_sort(q, l, j), quick_sort(q, j + 1, r);</p>
+<p>由于j的最小值是l,所以q[j+1..r]不会造成无限划分</p>
+<p>但q[l..j](即quick_sort(q, l, j))却可能造成无限划分，因为j可能为r 也就是说 重复了一开始工作的内容造成了死循环</p>
+<p>举例来说，若x选为q[r]，数组中q[l..r-1] &lt; x,</p>
+<p>那么这一轮循环结束时i &#x3D; r, j &#x3D; r，显然会造成无限划分</p>
+<p>2.do i++; while(q[i] &lt; x)和do j–; while(q[j] &gt; x)不能用q[i] &lt;&#x3D; x 和 q[j] &gt;&#x3D; x</p>
+<p>假设q[l..r]全相等</p>
+<p>则执行完do i++; while(q[i] &lt;&#x3D; x);之后，i会自增到r+1</p>
+<p>然后继续执行q[i] &lt;&#x3D; x 判断条件，造成数组下标越界(但这貌似不会报错)</p>
+<p>并且如果之后的q[i] &lt;&#x3D; x (此时i &gt; r) 条件也不幸成立，</p>
+<p>就会造成一直循环下去(亲身实验)，造成内存超限(Memory Limit Exceeded)</p>
+<p>3.if(i &lt; j) swap(q[i], q[j])能否使用 i &lt;&#x3D; j</p>
+<p>可以使用if(i &lt;&#x3D; j) swap(q[i], q[j]);</p>
+<p>因为 i &#x3D; j 时，交换一下q[i],q[j] 无影响，因为马上就会跳出循环了</p>
+<p>4.j的取值范围为[l..r-1]</p>
+<p>证明:</p>
+<p>假设 j 最终的值为 r ,说明只有一轮循环(两轮的话 j 至少会自减两次)</p>
+<p>说明q[r] &lt;&#x3D; x (因为要跳出do-while循环)</p>
+<p>说明 i &gt;&#x3D; r(while循环的结束条件), i 为 r 或 r + 1(必不可能成立)</p>
+<p>说明 i 自增到了 r , 说明 q[r] &gt;&#x3D; x 和 q[l..r-1] &lt; x,</p>
+<p>得出 q[r] &#x3D; x 和 q[l..r-1] &lt; x 的结论,但这与 x &#x3D; q[l + r &gt;&gt; 1]矛盾</p>
+<p>反证法得出 j &lt; r</p>
+<p>假设 j 可能小于 l 说明 q[l..r] &gt; x ,矛盾</p>
+<p>反证法得出 j &gt;&#x3D; l</p>
+<p>所以 j的取值范围为[l..r-1],不会造成无限划分和数组越界</p>
+<p>另外一个版本</p>
+<p>进行边界分析是为了避免分治时出现被分为0和n的情况，造成无限分治内存超限问题。<br>1.若以j为分界点，对于quick_sort(q, l, j), quick_sort(q, j + 1, r)，j有可能取l~r的任何一个值，若j取l，则quick_sort(q, l + 1, r)执行时会产生分割，不会出现0和n的情况；若j取r，则quick_sort(q, l, r)执行时会分割为n，会导致无限分治。本条结论：若在递归分治前保持j &#x3D; r，那么就会出现无限分治的情况</p>
+<p>2.所以只要在进入分治前不要让j取到r就可以了。那什么时候会取到r呢？初始化完毕时，j的值为r + 1，当执行过一次do j–; while(q[j] &gt; x)后，j变为r，并且恰好在此之后j都不会发生改变，即do j–; while(q[j] &gt; x)只会执行一次，如果保持j &#x3D; r不变的话，那么i会在此之前一直自增到i &#x3D; r，此时j &#x3D; r; i &#x3D; r不满足i &lt; j循环结束，此时，整个while(i &lt; j) {}循环只进行了1轮，分治，从而导致分治出了0和n两个情况。本条结论：若要在递归分治前保持j &#x3D; r，那么while(i &lt; j) {}只能执行一次</p>
+<p>3.现在把焦点转移到x的取值上，第3点说到，若出现无限分治问题，i会一直自增到i &#x3D; r，若出现这种情况，那么x的取值一定是q[r]，因为如果x的值不为q[r]，那么一定会在x处存在q[i] &#x3D;&#x3D; x，而q[i] &#x3D;&#x3D; x会导致i自增暂时停止，那么就会往下执行，执行do j–;，判断后进入第二轮while(i &lt; j) {}循环，进入第二轮循环会使j自减至少两次，而他的初值为r + 1，也就是说，j的值不会一直保持在j &#x3D; r上，也就不会导致无限分治。本条结论：若x的取值不为q[r]，那么while(i &lt; j) {}会至少执行两次，因此在进行递归分治前，j的值是一定小于r的。<br>l + r &gt;&gt; 1的值一定是小于r的，不会取到r，而l + r + 1 &gt;&gt; 1的值一定是大于l的，不会取到l</p>
+<p>所以综合2、3、4、5的结论就得出了若以j为分界点，x取q[l + r &gt;&gt; 1]，此时不会出现无限分治的情况；若以i为分界点，x取q[l + r + 1 &gt;&gt; 1]，此时不会出现无限分治的情况</p>
+<p><img src="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220503232028479.png" alt="image-20220503232028479"></p>
+<p>acwing </p>
+<p>BufferReader 比 Scanner 快10几倍</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException&#123;</span><br><span class="line">       BufferedReader br= <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">       </span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(br.readLine());</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[num];</span><br><span class="line">        </span><br><span class="line">        String[] res = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; num ;i++)&#123;</span><br><span class="line">            arr[i] = Integer.parseInt(res[i]);</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        quickSort(arr,<span class="number">0</span>,num - <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; num ; i++)&#123;</span><br><span class="line">            System.out.print(arr[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        br.close();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">quickSort</span><span class="params">(<span class="type">int</span>[] arr , <span class="type">int</span> l , <span class="type">int</span> r)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> arr[l];</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l - <span class="number">1</span> ;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r + <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">while</span>(arr[++i] &lt; x);</span><br><span class="line">            <span class="keyword">while</span>(arr[--j] &gt; x);</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(i &lt; j)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">                arr[i] = arr[j];</span><br><span class="line">                arr[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    quickSort(arr,l,j);</span><br><span class="line">    quickSort(arr,j+<span class="number">1</span>,r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>scanner版</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            </span><br><span class="line">            <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[num];</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; num ;i++)&#123;</span><br><span class="line">                arr[i] = sc.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">             </span><br><span class="line">            quickSort(arr,<span class="number">0</span>,num - <span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; num ; i++)&#123;</span><br><span class="line">                System.out.print(arr[i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">quickSort</span><span class="params">(<span class="type">int</span>[] arr , <span class="type">int</span> l , <span class="type">int</span> r)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> arr[l];</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l - <span class="number">1</span> ;</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> r + <span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">                <span class="keyword">while</span>(arr[++i] &lt; x);</span><br><span class="line">                <span class="keyword">while</span>(arr[--j] &gt; x);</span><br><span class="line">    </span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span>(i &lt; j)&#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">                    arr[i] = arr[j];</span><br><span class="line">                    arr[j] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        quickSort(arr,l,j);</span><br><span class="line">        quickSort(arr,j+<span class="number">1</span>,r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/12/%E5%B9%B3%E8%A1%A1%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -499,20 +639,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -564,12 +704,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">28k</span>
+    <span title="站点总字数">42k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">25 分钟</span>
+    <span title="站点阅读时长">39 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
