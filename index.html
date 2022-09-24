@@ -204,6 +204,119 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/24/%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8E%AF%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr笙">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫叶苑">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/24/%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8E%AF%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">无向图的最小环问题</a>
+        </h2>
+
+        <div class="post-meta">
+
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-24 08:26:57 / 修改时间：16:54:29" itemprop="dateCreated datePublished" datetime="2022-09-24T08:26:57+08:00">2022-09-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Floyd/" itemprop="url" rel="index"><span itemprop="name">Floyd</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="无向图的最小环问题"><a href="#无向图的最小环问题" class="headerlink" title="无向图的最小环问题"></a>无向图的最小环问题</h3><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/346/">344. 观光之旅 - AcWing题库</a></p>
+<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定一张无向图，求图中一个至少包含 33 个点的环，环上的节点不重复，并且环上的边的长度之和最小。</p>
+<p>你需要输出最小环的方案，若最小环不唯一，输出任意一个均可。</p>
+<p>####数据范围</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 ≤ N ≤ 100</span><br><span class="line">1 ≤ M ≤ 10000</span><br><span class="line">1 ≤ l &lt; 500</span><br></pre></td></tr></table></figure>
+
+
+
+<p>此类问题叫做无向图的最小环问题 可以用floyd解决</p>
+<h4 id="Floyd（O-n-3）"><a href="#Floyd（O-n-3）" class="headerlink" title="Floyd（O n^3）"></a>Floyd（O n^3）</h4><p>这里主要来讲一下利用Floyd求解的具体原理</p>
+<p>要想用Floyd求解无向图最小环问题，我们首先要深入里了解Floyd每一步的意义。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			dis[i][j] = <span class="built_in">min</span>(dis[i][j],dis[i][k]+dis[k][j]</span><br></pre></td></tr></table></figure>
+
+<p>为什么Floyd可以求解最小环呢</p>
+<p>虑一个图中的最小环 <strong>&#x2F; u-v-k-u &#x2F;</strong></p>
+<p>如果我们随意去掉其中一条边 <strong>&#x2F; u-v &#x2F;</strong></p>
+<p>那么剩下的 <strong>&#x2F; v-k-u &#x2F;</strong> 一定是图中 <strong>( u , v )</strong> 间的最短路径</p>
+<p>那么这怎么和Floyd算法联系呢？</p>
+<p>我们知道，</p>
+<p><strong>在Floyd算法枚举 ki 的时候，已经得到了前 k-1 个点的最短路径，这 k-1 个点不包括点 k，并且他们的最短路径中也不包括 k 点}这 k-1 个点不包括点 k，并且他们的最短路径中也不包括 k 点</strong></p>
+<p>那么我们便可以从这前 k-1 个点中选出两个点 <strong>i , j</strong> 来</p>
+<p>因为 <strong>&#x2F; i-j &#x2F;</strong> 已经是 <strong>( i , j )</strong> 间的最短路径，且这个路径不包含 <strong>k</strong> 点</p>
+<p><strong>注解：这里 &#x2F; i-j &#x2F; 这样表达只是为了直观，实际中 ( i , j ) 间的最短路很可能不仅仅只有 &#x2F; i-j &#x2F; ，还有可能会有其他点，但是这条路径一定是 ( i , j ) 间的最短路</strong></p>
+<p>所以连接 <strong>&#x2F; i-j-k-i &#x2F;</strong> ，我们就得到了一个经过 <strong>i , j , k</strong> 的最小环</p>
+<h4 id="记录路径"><a href="#记录路径" class="headerlink" title="记录路径"></a>记录路径</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">设环的形式是：i&lt;-&gt;k&lt;-&gt;j , i&lt;--&gt;j （i,j,k不同） </span><br><span class="line">floyd是典型的插点算法，每次插入点k，为此，在点k被[插入前]可计算i-j-k这个环</span><br><span class="line">即此时中间节点为：1~k-1，即我们已经算出了任意i&lt;-&gt;j的最短道路，中间经过的节点可以为 (1,2,3,...,k-1)</span><br><span class="line">我们只需枚举所有以k为环中最大节点的环即可。</span><br><span class="line"></span><br><span class="line">pos[i][j]:i~j的最短路中经过的点是k(即由这个状态转移过来)，且这个k是此路径中编号最大的点(除i,j)//根据Floyd算法实质决定</span><br><span class="line">这条道路存在以下两条性质</span><br><span class="line">1.在i~j的最短道路中，一定没有环(显然)</span><br><span class="line">2.设i,j之间的最短道路经过点k(不同于i,j)，则i~k , k~j之间必然没有交集</span><br><span class="line"></span><br><span class="line">2证：</span><br><span class="line">如果有交集,设交点为k&#x27;(k&#x27; &lt; k,根据Floyd算法实质相关)，则存在道路：</span><br><span class="line">i&lt;-&gt;k&#x27;&lt;-&gt;j , 由于[i&lt;-&gt;k&#x27;] &lt; [i&lt;-&gt;k] , [j-&gt;k&#x27;] &lt; [j-&gt;k] </span><br><span class="line">显然这条道路更小，和假设矛盾所以一定没有交集</span><br><span class="line"></span><br><span class="line">对于pos[i][j]，如果pos[i][j] == 0 : 说明i~j的最短路没有经过其他节点</span><br><span class="line"></span><br><span class="line">因此借用性质2来求解道路，注意书写顺序，确保最后输出顺序正确</span><br><span class="line">每次把i &lt;-&gt; j 之间划分成 i&lt;-&gt;k , k&lt;-&gt;j</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span> , INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="type">int</span> d[N][N],g[N][N];</span><br><span class="line"><span class="type">int</span> path[N] , cnt;</span><br><span class="line"><span class="type">int</span> pos[N][N];<span class="comment">//记录当时状态由哪个点转移过来</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归处理环上节点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_path</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pos[i][j] == <span class="number">0</span>) <span class="keyword">return</span>; <span class="comment">//i到j的最短路没有其他节点</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = pos[i][j]; <span class="comment">//记录当前节点k , 将i,j分成两部分，i -&gt; k -&gt; j 分成两部分递归处理</span></span><br><span class="line">    <span class="built_in">get_path</span>(i, k);</span><br><span class="line">    path[cnt ++ ] = k;</span><br><span class="line">    <span class="built_in">get_path</span>(k, j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="built_in">memset</span>(g,<span class="number">0x3f</span>,<span class="keyword">sizeof</span> g);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) g[i][i] = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (m -- )&#123;</span><br><span class="line">            <span class="type">int</span> a ,b, c;</span><br><span class="line">            cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">            g[a][b] = g[b][a] = <span class="built_in">min</span>(g[a][b] ,c);</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="type">int</span> res = INF;</span><br><span class="line">    <span class="built_in">memcpy</span>(d,g,<span class="keyword">sizeof</span> d); <span class="comment">//原图</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Floyd</span></span><br><span class="line">    <span class="comment">// dp思路, 假设k是环上的最大点, i ~ k ~ j(Floyd的思想)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= n; k ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//至少包含3个点的环所经过的点的最大标号是k</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; k; i ++ )</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; k; j ++ )</span><br><span class="line">            <span class="comment">// 由于是无向图,</span></span><br><span class="line">            <span class="comment">// ij调换其实是跟翻转图一样的道理</span></span><br><span class="line">            <span class="comment">// 直接剪枝, j从i + 1开始就好了</span></span><br><span class="line">            <span class="comment">// 更新最小环, 记录一下路径</span></span><br><span class="line">                <span class="keyword">if</span> ((<span class="type">long</span> <span class="type">long</span>)d[i][j] + g[j][k] + g[k][i] &lt; res)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// 注意,每当迭代到这的时候, </span></span><br><span class="line">                    <span class="comment">// d[i][j]存的是上一轮迭代Floyd得出的结果</span></span><br><span class="line">                    <span class="comment">// d[i][j] : i ~ j 中间经过不超过k - 1的最短距离(k是不在路径上的)</span></span><br><span class="line">                    res = d[i][j] + g[j][k] + g[k][i];</span><br><span class="line">                    cnt = <span class="number">0</span>;</span><br><span class="line">                    path[cnt ++ ] = k; <span class="comment">//先放k</span></span><br><span class="line">                    path[cnt ++ ] = i; <span class="comment">//从k走到i(k固定的)</span></span><br><span class="line">                    <span class="built_in">get_path</span>(i, j); <span class="comment">//递归求i 到 j的路径</span></span><br><span class="line">                    path[cnt ++ ] = j; <span class="comment">//j到k , k 固定</span></span><br><span class="line">                &#125;</span><br><span class="line">         <span class="comment">//更新一下所有ij经过k的最短路径</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span> ; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(d[i][j] &gt; d[i][k] + d[k][j])&#123;</span><br><span class="line">                    d[i][j] = d[i][k] + d[k][j];</span><br><span class="line">                    pos[i][j] = k;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(res == INF) <span class="built_in">puts</span>(<span class="string">&quot;No solution.&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cnt ; i++) cout &lt;&lt; path[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/22/%E6%B1%82%E9%80%86%E5%BA%8F%E5%AF%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -781,125 +894,6 @@
 
 <h3 id="矩阵差分"><a href="#矩阵差分" class="headerlink" title="矩阵差分"></a>矩阵差分</h3><p><img src="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220508145059920.png" alt="image-20220508145059920"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">differenceMatrix</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">10010</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] a = <span class="keyword">new</span> <span class="title class_">int</span>[N][N];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] b = <span class="keyword">new</span> <span class="title class_">int</span>[N][N];</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">q</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span> ; i &lt;= n ; i++ )&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span> ; j &lt;= m ; j++)&#123;</span><br><span class="line">                a[i][j] = sc.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//插入</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span> ; i &lt;= n ; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span> ; j &lt;= m ; j++)&#123;</span><br><span class="line">                insert(i,j,i,j,a[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (q-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x1</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">y1</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">x2</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">y2</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            insert(x1,y1,x2,y2,c);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//求前矩阵和</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span> ; i &lt;= n ; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span> ; j &lt;= m ; j++)&#123;</span><br><span class="line">                b[i][j] += b[i -<span class="number">1</span>][j] + b[i][j - <span class="number">1</span>] - b[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span> ;i &lt;= n ; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span> ; j &lt;= m ; j++)&#123;</span><br><span class="line">                System.out.print(b[i][j] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">insert</span><span class="params">(<span class="type">int</span> x1,<span class="type">int</span> y1,<span class="type">int</span> x2,<span class="type">int</span> y2,<span class="type">int</span> c)</span>&#123;</span><br><span class="line">        b[x1][y1] += c;</span><br><span class="line">        b[x1][y2+<span class="number">1</span>] -= c;</span><br><span class="line">        b[x2+<span class="number">1</span>][y1] -= c;</span><br><span class="line">        b[x2 +<span class="number">1</span>][y2 + <span class="number">1</span>] += c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/20/%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8E%AF%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr笙">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫叶苑">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/20/%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8E%AF%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">无向图的最小环问题</a>
-        </h2>
-
-        <div class="post-meta">
-
-        
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-20 08:26:57" itemprop="dateCreated datePublished" datetime="2022-09-20T08:26:57+08:00">2022-09-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-24 16:46:45" itemprop="dateModified" datetime="2022-09-24T16:46:45+08:00">2022-09-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Floyd/" itemprop="url" rel="index"><span itemprop="name">Floyd</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="无向图的最小环问题"><a href="#无向图的最小环问题" class="headerlink" title="无向图的最小环问题"></a>无向图的最小环问题</h3><h4 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h4><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/346/">344. 观光之旅 - AcWing题库</a></p>
-<h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>给定一张无向图，求图中一个至少包含 33 个点的环，环上的节点不重复，并且环上的边的长度之和最小。</p>
-<p>你需要输出最小环的方案，若最小环不唯一，输出任意一个均可。</p>
-<p>####数据范围</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 ≤ N ≤ 100</span><br><span class="line">1 ≤ M ≤ 10000</span><br><span class="line">1 ≤ l &lt; 500</span><br></pre></td></tr></table></figure>
-
-
-
-<p>此类问题叫做无向图的最小环问题 可以用floyd解决</p>
-<h4 id="Floyd（O-n-3）"><a href="#Floyd（O-n-3）" class="headerlink" title="Floyd（O n^3）"></a>Floyd（O n^3）</h4><p>这里主要来讲一下利用Floyd求解的具体原理</p>
-<p>要想用Floyd求解无向图最小环问题，我们首先要深入里了解Floyd每一步的意义。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">			dis[i][j] = <span class="built_in">min</span>(dis[i][j],dis[i][k]+dis[k][j]</span><br></pre></td></tr></table></figure>
-
-<p>为什么Floyd可以求解最小环呢</p>
-<p>虑一个图中的最小环 <strong>&#x2F; u-v-k-u &#x2F;</strong></p>
-<p>如果我们随意去掉其中一条边 <strong>&#x2F; u-v &#x2F;</strong></p>
-<p>那么剩下的 <strong>&#x2F; v-k-u &#x2F;</strong> 一定是图中 <strong>( u , v )</strong> 间的最短路径</p>
-<p>那么这怎么和Floyd算法联系呢？</p>
-<p>我们知道，</p>
-<p><strong>在Floyd算法枚举 ki 的时候，已经得到了前 k-1 个点的最短路径，这 k-1 个点不包括点 k，并且他们的最短路径中也不包括 k 点}这 k-1 个点不包括点 k，并且他们的最短路径中也不包括 k 点</strong></p>
-<p>那么我们便可以从这前 k-1 个点中选出两个点 <strong>i , j</strong> 来</p>
-<p>因为 <strong>&#x2F; i-j &#x2F;</strong> 已经是 <strong>( i , j )</strong> 间的最短路径，且这个路径不包含 <strong>k</strong> 点</p>
-<p><strong>注解：这里 &#x2F; i-j &#x2F; 这样表达只是为了直观，实际中 ( i , j ) 间的最短路很可能不仅仅只有 &#x2F; i-j &#x2F; ，还有可能会有其他点，但是这条路径一定是 ( i , j ) 间的最短路</strong></p>
-<p>所以连接 <strong>&#x2F; i-j-k-i &#x2F;</strong> ，我们就得到了一个经过 <strong>i , j , k</strong> 的最小环</p>
-<h4 id="记录路径"><a href="#记录路径" class="headerlink" title="记录路径"></a>记录路径</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">设环的形式是：i&lt;-&gt;k&lt;-&gt;j , i&lt;--&gt;j （i,j,k不同） </span><br><span class="line">floyd是典型的插点算法，每次插入点k，为此，在点k被[插入前]可计算i-j-k这个环</span><br><span class="line">即此时中间节点为：1~k-1，即我们已经算出了任意i&lt;-&gt;j的最短道路，中间经过的节点可以为 (1,2,3,...,k-1)</span><br><span class="line">我们只需枚举所有以k为环中最大节点的环即可。</span><br><span class="line"></span><br><span class="line">pos[i][j]:i~j的最短路中经过的点是k(即由这个状态转移过来)，且这个k是此路径中编号最大的点(除i,j)//根据Floyd算法实质决定</span><br><span class="line">这条道路存在以下两条性质</span><br><span class="line">1.在i~j的最短道路中，一定没有环(显然)</span><br><span class="line">2.设i,j之间的最短道路经过点k(不同于i,j)，则i~k , k~j之间必然没有交集</span><br><span class="line"></span><br><span class="line">2证：</span><br><span class="line">如果有交集,设交点为k&#x27;(k&#x27; &lt; k,根据Floyd算法实质相关)，则存在道路：</span><br><span class="line">i&lt;-&gt;k&#x27;&lt;-&gt;j , 由于[i&lt;-&gt;k&#x27;] &lt; [i&lt;-&gt;k] , [j-&gt;k&#x27;] &lt; [j-&gt;k] </span><br><span class="line">显然这条道路更小，和假设矛盾所以一定没有交集</span><br><span class="line"></span><br><span class="line">对于pos[i][j]，如果pos[i][j] == 0 : 说明i~j的最短路没有经过其他节点</span><br><span class="line"></span><br><span class="line">因此借用性质2来求解道路，注意书写顺序，确保最后输出顺序正确</span><br><span class="line">每次把i &lt;-&gt; j 之间划分成 i&lt;-&gt;k , k&lt;-&gt;j</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span> , INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="type">int</span> d[N][N],g[N][N];</span><br><span class="line"><span class="type">int</span> path[N] , cnt;</span><br><span class="line"><span class="type">int</span> pos[N][N];<span class="comment">//记录当时状态由哪个点转移过来</span></span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归处理环上节点</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_path</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (pos[i][j] == <span class="number">0</span>) <span class="keyword">return</span>; <span class="comment">//i到j的最短路没有其他节点</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = pos[i][j]; <span class="comment">//记录当前节点k , 将i,j分成两部分，i -&gt; k -&gt; j 分成两部分递归处理</span></span><br><span class="line">    <span class="built_in">get_path</span>(i, k);</span><br><span class="line">    path[cnt ++ ] = k;</span><br><span class="line">    <span class="built_in">get_path</span>(k, j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="built_in">memset</span>(g,<span class="number">0x3f</span>,<span class="keyword">sizeof</span> g);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++) g[i][i] = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (m -- )&#123;</span><br><span class="line">            <span class="type">int</span> a ,b, c;</span><br><span class="line">            cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">            g[a][b] = g[b][a] = <span class="built_in">min</span>(g[a][b] ,c);</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="type">int</span> res = INF;</span><br><span class="line">    <span class="built_in">memcpy</span>(d,g,<span class="keyword">sizeof</span> d); <span class="comment">//原图</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Floyd</span></span><br><span class="line">    <span class="comment">// dp思路, 假设k是环上的最大点, i ~ k ~ j(Floyd的思想)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= n; k ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//至少包含3个点的环所经过的点的最大标号是k</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; k; i ++ )</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; k; j ++ )</span><br><span class="line">            <span class="comment">// 由于是无向图,</span></span><br><span class="line">            <span class="comment">// ij调换其实是跟翻转图一样的道理</span></span><br><span class="line">            <span class="comment">// 直接剪枝, j从i + 1开始就好了</span></span><br><span class="line">            <span class="comment">// 更新最小环, 记录一下路径</span></span><br><span class="line">                <span class="keyword">if</span> ((<span class="type">long</span> <span class="type">long</span>)d[i][j] + g[j][k] + g[k][i] &lt; res)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// 注意,每当迭代到这的时候, </span></span><br><span class="line">                    <span class="comment">// d[i][j]存的是上一轮迭代Floyd得出的结果</span></span><br><span class="line">                    <span class="comment">// d[i][j] : i ~ j 中间经过不超过k - 1的最短距离(k是不在路径上的)</span></span><br><span class="line">                    res = d[i][j] + g[j][k] + g[k][i];</span><br><span class="line">                    cnt = <span class="number">0</span>;</span><br><span class="line">                    path[cnt ++ ] = k; <span class="comment">//先放k</span></span><br><span class="line">                    path[cnt ++ ] = i; <span class="comment">//从k走到i(k固定的)</span></span><br><span class="line">                    <span class="built_in">get_path</span>(i, j); <span class="comment">//递归求i 到 j的路径</span></span><br><span class="line">                    path[cnt ++ ] = j; <span class="comment">//j到k , k 固定</span></span><br><span class="line">                &#125;</span><br><span class="line">         <span class="comment">//更新一下所有ij经过k的最短路径</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= n ; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span> ; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(d[i][j] &gt; d[i][k] + d[k][j])&#123;</span><br><span class="line">                    d[i][j] = d[i][k] + d[k][j];</span><br><span class="line">                    pos[i][j] = k;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(res == INF) <span class="built_in">puts</span>(<span class="string">&quot;No solution.&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cnt ; i++) cout &lt;&lt; path[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
