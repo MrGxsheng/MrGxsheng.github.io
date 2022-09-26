@@ -34,7 +34,7 @@
 <meta property="og:image" content="https://lys2021.com/wp-content/uploads/2022/09/%E4%B8%8D%E8%A6%81%E5%81%9C%E4%B8%8B%E6%9D%A5%E5%95%8A.jpg">
 <meta property="og:image" content="https://lys2021.com/wp-content/uploads/2022/09/47798852_p0.jpg">
 <meta property="article:published_time" content="2022-09-26T00:26:57.000Z">
-<meta property="article:modified_time" content="2022-09-26T09:11:19.025Z">
+<meta property="article:modified_time" content="2022-09-26T09:24:03.161Z">
 <meta property="article:author" content="Mr笙">
 <meta property="article:tag" content="A哥的邀请赛">
 <meta name="twitter:card" content="summary">
@@ -239,7 +239,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-09-26 08:26:57 / 修改时间：17:11:19" itemprop="dateCreated datePublished" datetime="2022-09-26T08:26:57+08:00">2022-09-26</time>
+              <time title="创建时间：2022-09-26 08:26:57 / 修改时间：17:24:03" itemprop="dateCreated datePublished" datetime="2022-09-26T08:26:57+08:00">2022-09-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -389,12 +389,13 @@
 <p><img src="https://lys2021.com/wp-content/uploads/2022/09/QQ%E5%9B%BE%E7%89%8720220806095033.png" alt="img"></p>
 <p><strong>例如</strong>：对于某一次正在发生的团战，LYS的黑羽已经将”红心诡计“升至了 5 级，满级的黑羽基础物理普通攻击的伤害是160，且身上的装备为其提供了 50 点物理强度和 300 点法术强度。</p>
 <p>此时LYS遇到了一名敌人，该敌人当前生命值为 500，生命值上限为 2800，他<strong>在敌人到达技能释放范围内时</strong>，发动了”红心诡计“，<strong>迅速位移至敌人位置</strong>对其施加了满层的“震颤红心”并造成伤害，击杀了敌人并<strong>刷新了“红心诡计”的冷却时间</strong>，其伤害计算如下：</p>
-<p>$ \begin{aligned} 敌人受到的伤害 &amp;&#x3D; 240（5级技能基础伤害）\\ &amp;+ 300 × 50%（法术强度×法术比率的额外伤害）\\ &amp; + 160（该技能触发普通攻击效果，满级黑羽基础物理普通攻击的伤害是160）\\ &amp; + 50 × 100%（物理强度×物理比率的额外伤害）\\ &amp;+ 2300 × 25%（已损失的生命值×5级技能造成的百分比额外伤害）\\ &amp;&#x3D; 1175点！ \end{aligned}敌人受到的伤害&#x3D;240（5级技能基础伤害）+300×50%（法术强度×法术比率的额外伤害）+160（该技能触发普通攻击效果，满级黑羽基础物理普通攻击的伤害是160）+50×100%（物理强度×物理比率的额外伤害）+2300×25%（已损失的生命值×5级技能造成的百分比额外伤害）&#x3D;1175点！$<br><strong>已知：</strong></p>
-<p>当前LYS已经将”红心诡计“升至了 55 级，且黑羽的等级已达到最大，其基础物理普通攻击的伤害是 160160。</p>
+<p>$$<br>\begin{aligned} 敌人受到的伤害 &amp;&#x3D; 240（5级技能基础伤害）\\ &amp;+ 300 × 50%（法术强度×法术比率的额外伤害）\\ &amp; + 160（该技能触发普通攻击效果，满级黑羽基础物理普通攻击的伤害是160）\\ &amp; + 50 × 100%（物理强度×物理比率的额外伤害）\\ &amp;+ 2300 × 25%（已损失的生命值×5级技能造成的百分比额外伤害）\\ &amp;&#x3D; 1175点！ \end{aligned}敌人受到的伤害&#x3D;240（5级技能基础伤害）+300×50%（法术强度×法术比率的额外伤害）+160（该技能触发普通攻击效果，满级黑羽基础物理普通攻击的伤害是160）+50×100%（物理强度×物理比率的额外伤害）+2300×25%（已损失的生命值×5级技能造成的百分比额外伤害）&#x3D;1175点！<br>$$</p>
+<p><strong>已知：</strong></p>
+<p>当前LYS已经将”红心诡计“升至了 5 级，且黑羽的等级已达到最大，其基础物理普通攻击的伤害是 160160。</p>
 <p><strong>求：</strong>敌人原地挂机不动，LYS是否可以操作黑羽，在 (<em>X</em>,<em>Y</em>) 处选择任意一个在技能范围 <em>D</em> 之内的敌人开始，使用“红心诡计”位移到其身边击杀敌人并刷新技能，然后选择下一个敌人，如此重复，直到击杀所有的 5 名敌人。若”红心诡计”的范围内不存在敌人或使用一次”红心诡计“无法击杀敌人，LYS将<strong>停止后续的操作</strong>。</p>
 <p><strong>输入格式</strong></p>
-<p>第一行 55 个数，分别为黑羽装备的<strong>物理强度</strong> <em>A**D</em>，<strong>法术强度</strong> <em>A**P</em>，黑羽目前的位置横坐标 <em>X</em> 和纵坐标 <em>Y</em>，以及以 (<em>X</em>,<em>Y</em>) 为中心的”红心诡计“<strong>释放范围半径</strong> <em>D</em>。</p>
-<p>接下来 55 行，每行四个数，分别为敌人当前所剩的生命值 <em>L</em>，生命上限 <em>R</em>，以及其位置的横坐标 x<em>x</em> 和纵坐标 <em>y</em>.</p>
+<p>第一行 5 个数，分别为黑羽装备的<strong>物理强度</strong> <em>AD</em>，<strong>法术强度</strong> <em>AP</em>，黑羽目前的位置横坐标 <em>X</em> 和纵坐标 <em>Y</em>，以及以 (<em>X</em>,<em>Y</em>) 为中心的”红心诡计“<strong>释放范围半径</strong> <em>D</em>。</p>
+<p>接下来 55 行，每行四个数，分别为敌人当前所剩的生命值 <em>L</em>，生命上限 <em>R</em>，以及其位置的横坐标 <em>x</em> 和纵坐标 <em>y</em>.</p>
 <p><strong>输出格式</strong></p>
 <p>第一行，若可以击杀全部敌人，输出”YES“，否则输出”NO“。</p>
 <p>若为”NO”，第二行额外输出一个整数，表示最大击杀数。</p>
