@@ -204,6 +204,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/28/%E6%B4%9B%E8%B0%B7P1437/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Mr笙">
+      <meta itemprop="description" content="选择有时候比努力更重要">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="枫叶苑">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/28/%E6%B4%9B%E8%B0%B7P1437/" class="post-title-link" itemprop="url">章鱼哥的试炼1</a>
+        </h2>
+
+        <div class="post-meta">
+
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-28 08:26:57 / 修改时间：18:04:12" itemprop="dateCreated datePublished" datetime="2022-09-28T08:26:57+08:00">2022-09-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BC%A0%E9%80%92%E9%97%AD%E5%8C%85/" itemprop="url" rel="index"><span itemprop="name">传递闭包</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1347">P1347 排序 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>一个不同的值的升序排序数列指的是一个从左到右元素依次增大的序列，例如，一个有序的数列 $ A,B,C,D $表示$ A&lt;B,B&lt;C,C&lt;D $。在这道题中，我们将给你一系列形如$ A&lt;B $的关系，并要求你判断是否能够根据这些关系确定这个数列的顺序。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行有两个正整数 $ n,m，n $表示需要排序的元素数量，$ 2\leq n\leq 26 $，第 11 到 <em>n</em> 个元素将用大写的 $ A,B,C,D\dots $表示。<em>m</em> 表示将给出的形如$  A&lt;B $的关系的数量。</p>
+<p>接下来有 <em>m</em> 行，每行有 3 个字符，分别为一个大写字母，一个 <code>&lt;</code> 符号，一个大写字母，表示两个元素之间的关系。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>若根据前 <em>x</em> 个关系即可确定这 <em>n</em> 个元素的顺序 <code>yyy..y</code>（如 <code>ABC</code>），输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sorted sequence determined after xxx relations: yyy...y.</span><br></pre></td></tr></table></figure>
+
+<p>若根据前 x<em>x</em> 个关系即发现存在矛盾（如 A&lt;B,B&lt;C,C&lt;A<em>A</em>&lt;<em>B</em>,<em>B</em>&lt;<em>C</em>,<em>C</em>&lt;<em>A</em>），输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Inconsistency found after x relations.</span><br></pre></td></tr></table></figure>
+
+<p>若根据这 <em>m</em> 个关系无法确定这 <em>n</em> 个元素的顺序，输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sorted sequence cannot be determined.</span><br></pre></td></tr></table></figure>
+
+<p>（提示：确定 <em>n</em> 个元素的顺序后即可结束程序，可以不用考虑确定顺序之后出现矛盾的情况）</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * floyd 传递闭包</span></span><br><span class="line"><span class="comment"> * 及优化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> debug puts(<span class="string">&quot;-----&quot;</span>)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pi (acos(-1.0))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eps (1e-8)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf (1&lt;&lt;30)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">bool</span> d[N][N];</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Floyd</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>  ; k &lt; n ; k++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span> ; j &lt; n ; j++)</span><br><span class="line">				d[i][j] |= d[i][k] &amp;&amp; d[k][j]; <span class="comment">//i 连接k , k 连接 j 那么 i 可以连接 j</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得最小的字符</span></span><br><span class="line"><span class="function"><span class="type">char</span> <span class="title">get_min</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//枚举最小的字符</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!st[i])&#123;<span class="comment">//如果该字符已经输出过则跳过</span></span><br><span class="line">			<span class="type">bool</span> flag = <span class="literal">true</span>;<span class="comment">//判断是否有比 i字符更小的</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span> ; j &lt; n ; j++) </span><br><span class="line">				<span class="keyword">if</span>(!st[j] &amp;&amp; d[j][i])&#123; <span class="comment">//首先要保证比较的字符没有输出过 并且 j是小于i的</span></span><br><span class="line">					flag = <span class="literal">false</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">if</span>(flag)&#123; <span class="comment">//说明i是目前最小的 返回标记即可</span></span><br><span class="line">				st[i] = <span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">return</span> <span class="string">&#x27;A&#x27;</span> + i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断目前的排序 是否满足题意</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">check</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//判断矛盾 当自己小于自己时 即为矛盾</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n ; i++)		</span><br><span class="line">		<span class="keyword">if</span>(d[i][i]) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//判断当前排序是否包括所有元素</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; n ; i ++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span> ; j &lt; i ; j++)</span><br><span class="line">			<span class="comment">//如果 i 和 j 没有任何关系的话 即没有排序完</span></span><br><span class="line">			<span class="keyword">if</span>(!d[i][j] &amp;&amp; !d[j][i]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="comment">//表示当前排序 已经能够将所有元素 有序的排好</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//每次加a，b边的时候 只需要在添加 和a ,b有关的边</span></span><br><span class="line"><span class="comment">//不用每次都跑Floyd</span></span><br><span class="line"><span class="comment">//优化 复杂度 n^2</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="type">int</span> type = <span class="number">0</span> , t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= m ; i++)&#123;</span><br><span class="line">		<span class="type">char</span> str[<span class="number">5</span>];</span><br><span class="line">		cin &gt;&gt; str;</span><br><span class="line">		<span class="type">int</span> a = str[<span class="number">0</span>] - <span class="string">&#x27;A&#x27;</span> , b = str[<span class="number">2</span>] - <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">		<span class="keyword">if</span>(!type)&#123;</span><br><span class="line">			d[a][b] = <span class="number">1</span>; <span class="comment">//将a 和 b 连一条边</span></span><br><span class="line">			<span class="comment">//枚举连接a的左边 和 右边 </span></span><br><span class="line">			<span class="comment">//顺序： x a ...  b y</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> x = <span class="number">0</span> ; x &lt; n ; x ++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(d[x][a]) d[x][b] = <span class="number">1</span>; <span class="comment">//如果x 连接a 那么 x也可以连接b</span></span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> y = <span class="number">0</span> ; y &lt; n ; y++)&#123;</span><br><span class="line">					<span class="keyword">if</span>(d[b][y]) d[a][y] = <span class="number">1</span>; <span class="comment">//同上</span></span><br><span class="line">					<span class="keyword">if</span>(d[x][a] &amp;&amp; d[b][y]) d[x][y] = <span class="number">1</span>; </span><br><span class="line">				&#125;</span><br><span class="line">				type = <span class="built_in">check</span>(); <span class="comment">// 判断当前排序的类型</span></span><br><span class="line">				<span class="keyword">if</span>(type) t = i; <span class="comment">//记录最小值</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!type) <span class="built_in">puts</span>(<span class="string">&quot;Sorted sequence cannot be determined.&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (type == <span class="number">2</span>) <span class="built_in">printf</span>(<span class="string">&quot;Inconsistency found after %d relations.\n&quot;</span>, t);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Sorted sequence determined after %d relations: &quot;</span>, t);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, <span class="built_in">get_min</span>());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Floyd 做 传递闭包 复杂度 n^3</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="type">int</span> type = <span class="number">0</span> , t = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span> ; i &lt;= m ; i++)&#123;</span><br><span class="line">		<span class="type">char</span> str[<span class="number">5</span>];</span><br><span class="line">		cin &gt;&gt; str;</span><br><span class="line">		<span class="type">int</span> a = str[<span class="number">0</span>] - <span class="string">&#x27;A&#x27;</span> , b = str[<span class="number">2</span>] - <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">		<span class="keyword">if</span>(!type)&#123;</span><br><span class="line">			d[a][b] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">Floyd</span>(); <span class="comment">// 添加边</span></span><br><span class="line">			type = <span class="built_in">check</span>();</span><br><span class="line">			<span class="keyword">if</span>(type) t = i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (!type) <span class="built_in">puts</span>(<span class="string">&quot;Sorted sequence cannot be determined.&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (type == <span class="number">2</span>) <span class="built_in">printf</span>(<span class="string">&quot;Inconsistency found after %d relations.\n&quot;</span>, t);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Sorted sequence determined after %d relations: &quot;</span>, t);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, <span class="built_in">get_min</span>());</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> T;</span><br><span class="line">	<span class="comment">// cin &gt;&gt; T;</span></span><br><span class="line">	T = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(T--) <span class="built_in">solve</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/A%E7%9A%84%E9%82%80%E8%AF%B7%E8%B5%9B%E9%A2%98%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1581,105 +1680,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Mr笙">
-      <meta itemprop="description" content="选择有时候比努力更重要">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫叶苑">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/17/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/" class="post-title-link" itemprop="url">费马小定理求逆元</a>
-        </h2>
-
-        <div class="post-meta">
-
-        
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-17 08:26:57" itemprop="dateCreated datePublished" datetime="2022-09-17T08:26:57+08:00">2022-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-18 21:05:24" itemprop="dateModified" datetime="2022-09-18T21:05:24+08:00">2022-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">费马小定理</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>409</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>该贴转自网络</p>
-<p>###该贴转自网络</p>
-<h3 id="费马小定理定义及证明"><a href="#费马小定理定义及证明" class="headerlink" title="费马小定理定义及证明"></a>费马小定理定义及证明</h3><p><img src="https://i.loli.net/2020/10/16/HAnFarSYGyhRBZc.png" alt="image-20201016085335031"></p>
-<h4 id="为什么每一个-Ai-a-mod-p-是独一无二的"><a href="#为什么每一个-Ai-a-mod-p-是独一无二的" class="headerlink" title="为什么每一个 Ai * a(mod p) 是独一无二的"></a>为什么每一个 Ai * a(mod p) 是独一无二的</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于任意两个Ai×a而言, 二者的差值为a的整数倍,而(a,p)=1,因此(Ai,a)%p 一定不会得到相同的余数(同余的两个数的差值一定是mod的整数倍)。</span><br></pre></td></tr></table></figure>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220918210213391.png" alt="image-20220918210213391"><img src="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220918210302089.png" alt="image-20220918210302089"></h4><h4 id="费马小定理求逆元"><a href="#费马小定理求逆元" class="headerlink" title="费马小定理求逆元"></a>费马小定理求逆元</h4><p><img src="https://hasdsd-markdown.oss-cn-beijing.aliyuncs.com/img/image-20220918210347156.png" alt="image-20220918210347156"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line">ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">quick_pow</span><span class="params">(ll base,ll idx)</span></span>&#123;</span><br><span class="line">    ll ans = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(idx)&#123;</span><br><span class="line">        <span class="keyword">if</span>(idx &amp; <span class="number">1</span>)&#123;</span><br><span class="line">            ans *= base;</span><br><span class="line">            ans %= mod;</span><br><span class="line">        &#125;</span><br><span class="line">        base *= base;</span><br><span class="line">        base %= mod;</span><br><span class="line">        idx &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">inv</span><span class="params">(ll a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">quick_pow</span>(a,mod<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/17/%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1838,20 +1838,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1903,12 +1903,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">66k</span>
+    <span title="站点总字数">69k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:01</span>
+    <span title="站点阅读时长">1:03</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
